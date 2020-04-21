@@ -12,7 +12,7 @@ import Calendario from './Calendario';
 const App = () => {
   const [showCalendar, setShowCalendar] = useState(false);
   return (
-    <TouchableWithoutFeedback onPress={()=>setShowCalendar(!showCalendar)}>
+    <TouchableWithoutFeedback onPress={()=>setShowCalendar(showCalendar ? false : false)}>
       <View style={styles.centeredView}>
           <Button
           title={'show calendar'}
