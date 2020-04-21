@@ -1,19 +1,66 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component, useState } from "react";
+import {
+  Text,
+  StyleSheet,
+  View,
+  TouchableWithoutFeedback,
+  Button
+} from "react-native";
 
-export default function App() {
+import Calendario from './Calendario';
+
+const App = () => {
+  const [showCalendar, setShowCalendar] = useState(false);
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <TouchableWithoutFeedback onPress={()=>setShowCalendar(!showCalendar)}>
+      <View style={styles.centeredView}>
+          <Button
+          title={'show calendar'}
+          onPress={()=>{setShowCalendar(!showCalendar)}}
+          />
+          {showCalendar ? <Calendario/>:null}
+      </View>
+    </TouchableWithoutFeedback>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  container: {
+  centeredView: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22
   },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5
+  },
+  openButton: {
+    backgroundColor: "#F194FF",
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center"
+  }
 });
+
+export default App;
